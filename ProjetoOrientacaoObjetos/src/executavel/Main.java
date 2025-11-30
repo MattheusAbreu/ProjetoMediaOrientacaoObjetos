@@ -5,7 +5,7 @@ import classes.Aluno;
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		Aluno aluno1 = new Aluno();
 		aluno1.setNome("Joao");
 		aluno1.setIdade(29);
@@ -17,16 +17,14 @@ public class Main {
 		aluno1.setNomePai("José");
 		aluno1.setNomeEscola("Coronel");
 		aluno1.setSerieMatriculado("Terceiro");
-		aluno1.setNota1(7);
-		aluno1.setNota2(10);
-		aluno1.setNota3(7);
-		aluno1.setNota4(8);
+		aluno1.getDisciplina().setNota1(7);
+		aluno1.getDisciplina().setNota2(1000000000);
+		aluno1.getDisciplina().setNota3(7);
+		aluno1.getDisciplina().setNota4(7);
 		System.out.println(aluno1.getMediaNota());
 		System.out.println(aluno1.getAlunoAprovadoBoolean());
 		System.out.println(aluno1.getAlunoAprovadoString());
-		
-		
-		
+
 	}
 
 }
