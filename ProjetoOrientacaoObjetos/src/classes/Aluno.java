@@ -123,13 +123,16 @@ public class Aluno {
 		
 	}
 
-	public boolean getAlunoAprovadoBoolean() {
+	public String getAlunoAprovadoBoolean() {
 		double media = this.getMediaNota();
 		if (media >= 7) {
-			return true;
+			return "Aprovado";
 
-		} else {
-			return false;
+		} else if (media >= 5){
+			return "Recuperação";
+		}
+		else {
+			return "Reprovado";
 		}
 	}
 
