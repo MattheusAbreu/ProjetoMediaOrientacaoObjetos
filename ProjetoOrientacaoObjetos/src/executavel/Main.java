@@ -1,6 +1,9 @@
 package executavel;
 
+import javax.swing.JOptionPane;
+
 import classes.Aluno;
+import classes.Disciplina;
 
 public class Main {
 
@@ -17,10 +20,23 @@ public class Main {
 		aluno1.setNomePai("José");
 		aluno1.setNomeEscola("Coronel");
 		aluno1.setSerieMatriculado("Terceiro");
-		aluno1.getDisciplina().setNota1(7);
-		aluno1.getDisciplina().setNota2(1000000000);
-		aluno1.getDisciplina().setNota3(7);
-		aluno1.getDisciplina().setNota4(7);
+		
+		int numeroMaterias = Integer.parseInt(JOptionPane.showInputDialog("Digite o numero de materias"));
+		
+		for (int i = 1 ; i <=numeroMaterias ; i++) {
+			
+			String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina: ");
+			double notaDisciplina = Double.parseDouble(JOptionPane.showInputDialog("Nota da disciplina de "+nomeDisciplina+" :"));
+			Disciplina disciplina = new Disciplina(nomeDisciplina, notaDisciplina);
+			aluno1.getDisciplinas().add(disciplina);
+			
+			
+			
+		}
+		
+		
+		
+		
 		System.out.println(aluno1.getMediaNota());
 		System.out.println(aluno1.getAlunoAprovadoBoolean());
 		System.out.println(aluno1.getAlunoAprovadoString());

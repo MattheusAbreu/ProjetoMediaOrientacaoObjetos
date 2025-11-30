@@ -1,5 +1,8 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Aluno {
 
 	private String nome;
@@ -13,7 +16,7 @@ public class Aluno {
 	private String nomeEscola;
 	private String serieMatriculado;
 
-	private Disciplina disciplina = new Disciplina();
+	private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
 	public String getNome() {
 		return nome;
@@ -95,16 +98,29 @@ public class Aluno {
 		this.serieMatriculado = serieMatriculado;
 	}
 
-	public Disciplina getDisciplina() {
-		return disciplina;
-	}
 
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+	
+	
 
 	public double getMediaNota() {
-		return (disciplina.getNota1() + disciplina.getNota2() + disciplina.getNota3() + disciplina.getNota4()) / 4;
+	
+		double somaNotas=0;
+		
+		 for (Disciplina disciplina : disciplinas) {
+			 
+			 somaNotas+=disciplina.getNotaDisciplina();
+			 
+			 
+		 }
+		 
+		 return somaNotas / disciplinas.size();
+		
 	}
 
 	public boolean getAlunoAprovadoBoolean() {
