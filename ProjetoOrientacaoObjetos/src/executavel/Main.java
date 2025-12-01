@@ -7,12 +7,23 @@ import javax.swing.JOptionPane;
 
 import classes.Aluno;
 import classes.Disciplina;
+import constantes.StatusAluno;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		
+		String login = JOptionPane.showInputDialog("Digite o login");
+		String senha = JOptionPane.showInputDialog("Digite a senha");
 
+		if(login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
+		
 		List<Aluno> alunos = new ArrayList<Aluno>();
+		List<Aluno> alunosAprovados = new ArrayList<Aluno>();
+		List<Aluno> alunosRecuperacao = new ArrayList<Aluno>();
+		List<Aluno> alunosReprovados = new ArrayList<Aluno>();
+		
 
 		int quantidadeAlunos = Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade de alunos que serão cadastrados: "));
 
@@ -35,8 +46,7 @@ public class Main {
 
 			}
 
-			System.out.println(aluno1.getMediaNota());
-			System.out.println(aluno1.getAlunoAprovado());
+			
 
 			int escolha = JOptionPane.showConfirmDialog(null, "Gostaria de apagar alguma materia?");
 
@@ -63,11 +73,47 @@ public class Main {
 				}
 			}
 
-			for (Disciplina disciplinaNome : aluno1.getDisciplinas()) {
-				System.out.println(disciplinaNome.getNomeDisciplina());
-			}
 			alunos.add(aluno1);
+			System.out.println(aluno1.getMediaNota());
+			System.out.println(aluno1.getAlunoAprovado());
+		
 		}
+		
+		for (Aluno aluno : alunos) {
+			if (aluno.getAlunoAprovado().equals(StatusAluno.APROVADO)) {
+				alunosAprovados.add(aluno);
+			}
+			else if  (aluno.getAlunoAprovado().equals(StatusAluno.RECUPERACAO)) {
+				alunosRecuperacao.add(aluno);
+			} else alunosReprovados.add(aluno);
 
+		    }
+		
+		
+		
+		
+		System.out.println("Alunos aprovados: ");
+		for ( Aluno aluno : alunosAprovados) {
+			System.out.println(aluno.getNome());
+		}
+		System.out.println("\nAlunos em recuperação: ");
+		for ( Aluno aluno : alunosRecuperacao) {
+			System.out.println(aluno.getNome());
+		}
+		System.out.println("\nAlunos reprovados: ");
+		for ( Aluno aluno : alunosReprovados) {
+			System.out.println(aluno.getNome());
+		}
+	}
 	}
 }
+
+
+
+
+
+
+
+
+
+
